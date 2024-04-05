@@ -1,0 +1,72 @@
+@startuml Dental Visit class-diagram
+
+title Dental Visit class-diagram
+
+class Patient extends User{
+    id: integer
+    is_registred : bool
+    user_info : UserInfo
+    additional_info : AdditionlInformation
+}
+
+class Hospital{
+    id: integer
+    location: String
+    description : String
+
+}
+
+class Diagnosis{
+    description : String
+    id: integer
+} 
+
+class AdditionlInformation{
+    registration_date : Date
+    last_visit_date : Date
+    next_visit_date : Date
+    dentist_id : integer
+    diagnosis_id : integer
+    payment_info: PaymentInfo
+}
+
+class Dentist extends User {
+    hospital_id: integer 
+    id : integer
+
+}
+
+class Registrator extends User{
+    hospital_id: integer 
+    id : integer
+
+}
+
+class PaymentInfo{
+    payment_type: PaymentType
+    ammount: float
+
+}
+
+class User {
+    name: String 
+    surename : String
+    phone_number: String
+}
+
+enum PaymentType{
+    cash
+    card
+}
+
+
+AdditionlInformation --* Patient 
+
+
+Hospital..> Dentist
+Hospital..> Registrator 
+PaymentInfo --*  AdditionlInformation
+Diagnosis --*  AdditionlInformation
+
+PaymentInfo -- PaymentType
+

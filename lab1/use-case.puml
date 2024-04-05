@@ -1,0 +1,43 @@
+@startuml Dental Visit Use-Case
+
+title Dental Visit Use-Case
+
+left to right direction
+actor "Guest" as guest
+actor "Patient" as patient
+actor "Dentist" as dentist
+actor "Tech operator" as techOp
+
+usecase "Registration on review" as registration
+usecase "Medical examination" as medicalExamination
+usecase "Dentistry" as dentistry
+usecase "Medical consulting" as medicalConsulting
+usecase "Scheduling subsequent visits" as scheduling
+usecase "Providing additional information" as information
+usecase "Medical tests" as tests
+usecase "x-ray" as xray
+usecase "Payment" as pay
+usecase "Cash" as cash
+usecase "Card" as card
+
+guest --> registration
+techOp --> scheduling
+techOp --> registration
+techOp --> pay
+dentist --> medicalConsulting
+
+registration ..> information : include
+dentistry ..> medicalExamination: include
+medicalConsulting ..> pay: include
+
+medicalConsulting <.. dentistry : extends
+tests .left.> dentistry : extends
+xray .left.> dentistry : extends
+scheduling ..> dentistry : extends
+pay <.. cash: extends
+pay <.. card : extends
+
+
+patient-> medicalConsulting
+
+@enduml

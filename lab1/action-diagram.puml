@@ -1,0 +1,31 @@
+@startuml Action
+title Action diagram
+start
+:Visitor came to the hospital;
+if(Visitor already registred?) then (no)
+    :Registration procedure;
+else (yes)
+endif
+:Medical consulting;
+:Medical examination;
+if (Is additional things needed?) then (yes)
+    :medical tests;
+    if (Is x-ray needed?) then (yes)
+        :x-ray;
+    else (no)
+    endif
+else (no)
+endif
+:Dentistry;
+
+if(Additional sessions is needed?) then (yes)
+:scheduling next session;
+else(no)
+endif 
+:Payment;
+
+stop
+
+@enduml
+
+

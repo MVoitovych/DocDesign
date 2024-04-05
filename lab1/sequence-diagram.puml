@@ -1,0 +1,13 @@
+@startuml sequence 
+
+Patient -> Registrator : Registration
+Registrator -> Patient : asking for information
+Patient -> Registrator : giving information
+Registrator -> Database : saving information to database
+Registrator -> Patient : providing a referral to a doctor
+Patient -> Dentist : Visit for treatment
+Dentist -> Patient : diagnose
+Dentist-> Registrator : Giving visit details 
+Registrator -> Database : Record visit details
+Registrator -> Database: Upload X-Ray images
+Dentist --> Patient : schedule treatment plan
