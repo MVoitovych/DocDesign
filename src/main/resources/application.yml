@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: dental-app
+  datasource:
+    url: jdbc:mysql://localhost:3306/dental_app
+    username: root
+    password: 123MihaMax123@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+application:
+  csv-data-file: src/main/java/data.csv
